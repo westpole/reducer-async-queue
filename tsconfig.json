@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "module": "CommonJS",
+    "target": "es6",
+    "allowJs": true,
+    "sourceMap": true,
+    "baseUrl": "./"
+  }
+}

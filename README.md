@@ -24,6 +24,12 @@ npm i
 npm start
 ```
 
+Alternatively you can run TypeScript version:
+
+```shell
+npm run start:ts
+```
+
 #### 3.1 Output example
 
 ```shell
