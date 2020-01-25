@@ -1,0 +1,27 @@
+{
+  "name": "reducer-async-queue",
+  "version": "0.0.1",
+  "description": "Usage of Array.reducer for async requests",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "array.reducer",
+    "node",
+    "async",
+    "await",
+    "promise",
+    "fetch",
+    "composition",
+    "software",
+    "functional",
+    "programming"
+  ],
+  "author": "Stanislav Spuzyak",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
