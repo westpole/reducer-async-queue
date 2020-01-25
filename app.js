@@ -171,11 +171,11 @@ async function getCalendar(appState) {
  */
 function displayNextGP(appState) {
   return new Promise((resolve) => {
-    const calendarGPIndex = appState.calendar
+    const gpInfo = appState.calendar
       .find((gp) => (getTodayInPosix(appState) <= convertDateIntoPosix(gp)));
 
     console.log('The next Formula-1 GP:');
-    console.log(JSON.stringify(calendarGPIndex, null, 2));
+    console.log(JSON.stringify(gpInfo, null, 2));
 
     resolve(appState);
   });
