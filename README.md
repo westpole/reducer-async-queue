@@ -1,29 +1,30 @@
 # Async request queue via Array.reducer
 
 Application retrieves data for a next Formula-1 GP for 2020 season.
+
 Data provided by [Ergast Developer API](https://ergast.com/mrd/).
 
 ## Run application
 
 This is a Node application. You could run it from Bash/Terminal.
 
-#### Clone Application
+#### 1. Clone Application
 
-Git repository:
+Git repository: https://github.com/westpole/reducer-async-queue
 
-#### Install dependencies
+#### 2. Install dependencies
 
 ```shell
 npm i
 ```
 
-#### Run Application
+#### 3. Run Application
 
 ```shell
 npm start
 ```
 
-#### Output example
+#### 3.1 Output example
 
 ```shell
 > node app.js
