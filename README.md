@@ -7,6 +7,7 @@ Data provided by [Ergast Developer API](https://ergast.com/mrd/).
 ## Run application
 
 This is a Node application. You could run it from Bash/Terminal.
+Application was created in Javascript and Typescript language which are located in respective the folders.
 
 #### 1. Clone Application
 
@@ -55,4 +56,16 @@ The next Formula-1 GP:
   "date": "2020-03-15",
   "time": "05:10:00Z"
 }
+```
+
+## Development
+
+#### Lint code base
+
+```shell
+# javascript application
+npm run lint:js
+
+# typescript application
+npm run lint:ts
 ```
