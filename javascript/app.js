@@ -43,16 +43,6 @@ const initState = {
  */
 
 /**
- * Task queue
- *
- * @param {function[]} queue List of tasks
- * @param {AppState} state Application state
- */
-function runner(queue, state) {
-  queue.reduce(queueHandler, Promise.resolve(state));
-}
-
-/**
  * Queue reducer
  *
  * @param {object} previousPromise
@@ -63,6 +53,16 @@ async function queueHandler(previousPromise, taskFn) {
   const newState = await previousPromise;
 
   return taskFn(newState);
+}
+
+/**
+ * Task queue
+ *
+ * @param {function[]} queue List of tasks
+ * @param {AppState} state Application state
+ */
+function runner(queue, state) {
+  queue.reduce(queueHandler, Promise.resolve(state));
 }
 
 /**
@@ -125,7 +125,7 @@ function getTodayInPosix(appState) {
  * Application stages
  */
 
- /**
+/**
   * Initialize App state for GP data of F1 2020 season
   *
   * @param {AppState} appState
@@ -147,20 +147,23 @@ function setupF12020Season(appState) {
  */
 async function getCalendar(appState) {
   const response = await fetch(`${appState.baseUrl}/${appState.year}.json`);
+  let jsonData;
 
   try {
-    const jsonData = await setResponseConvertion('json')(response);
-
-    appState.calendar = jsonData.MRData.RaceTable.Races;
-
+    jsonData = await setResponseConvertion('json')(response);
   } catch (error) {
+    /* eslint-disable */
     console.error(`Cannot get calendar from ${appState.baseUrl}`);
     console.error(error);
+    /* eslint-enable */
 
     process.exit();
   }
 
-  return appState;
+  return {
+    ...appState,
+    calendar: jsonData.MRData.RaceTable.Races,
+  };
 }
 
 /**
@@ -174,8 +177,10 @@ function displayNextGP(appState) {
     const gpInfo = appState.calendar
       .find((gp) => (getTodayInPosix(appState) <= convertDateIntoPosix(gp)));
 
+    /* eslint-disable */
     console.log('The next Formula-1 GP:');
     console.log(JSON.stringify(gpInfo, null, 2));
+    /* eslint-enable */
 
     resolve(appState);
   });

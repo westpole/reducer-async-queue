@@ -34,4 +34,17 @@ export interface ConverterOptions {
   now?: number;
 }
 
+export interface ErganResponse {
+  MRData?: {
+    xmlns: string;
+    series: string;
+    url: string;
+    limit: string;
+    offset: string;
+    total: string;
+    RaceTable: {};
+  };
+  json: Function;
+}
+
 export type Queue = Function[];

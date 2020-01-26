@@ -1,6 +1,11 @@
 import fetch from 'node-fetch';
 
-import { AppState, ConverterOptions, Queue } from './types';
+import {
+  AppState,
+  ConverterOptions,
+  Queue,
+  ErganResponse,
+} from './types';
 
 const initState: AppState = {
   baseUrl: null,
@@ -17,18 +22,11 @@ const initState: AppState = {
  */
 
 /**
- * Task queue runner
- */
-function runner(queue: Queue, state: AppState) {
-  queue.reduce(queueHandler, Promise.resolve(state));
-}
-
-/**
  * Queue reducer
  */
 async function queueHandler(
   previousPromise: Promise<AppState>,
-  taskFn: Function
+  taskFn: Function,
 ): Promise<AppState> {
   const newState = await previousPromise;
 
@@ -36,17 +34,26 @@ async function queueHandler(
 }
 
 /**
+ * Task queue runner
+ */
+function runner(queue: Queue, state: AppState): void {
+  queue.reduce(queueHandler, Promise.resolve(state));
+}
+
+/**
  * Factory for response converter
  */
-function setResponseConvertion(type: string): any {
-  return function convertResponse(response: any) {
+function setResponseConvertion(type: string): Function {
+  return function convertResponse(
+    response: ErganResponse,
+  ): Promise<ErganResponse> {
     switch (type) {
       case 'json': {
         return response.json();
       }
 
       default: {
-        return response;
+        return Promise.resolve(response);
       }
     }
   };
@@ -83,7 +90,7 @@ function getTodayInPosix(appState: AppState): number {
  * Application stages
  */
 
- /**
+/**
   * Initialize App state for GP data of F1 2020 season
   *
   * @param {AppState} appState
@@ -102,20 +109,23 @@ function setupF12020Season(appState: AppState): Promise<AppState> {
  */
 async function getCalendar(appState: AppState): Promise<AppState> {
   const response = await fetch(`${appState.baseUrl}/${appState.year}.json`);
+  let jsonData;
 
   try {
-    const jsonData = await setResponseConvertion('json')(response);
-
-    appState.calendar = jsonData.MRData.RaceTable.Races;
-
+    jsonData = await setResponseConvertion('json')(response);
   } catch (error) {
+    /* eslint-disable */
     console.error(`Cannot get calendar from ${appState.baseUrl}`);
     console.error(error);
+    /* eslint-enable */
 
     process.exit();
   }
 
-  return appState;
+  return {
+    ...appState,
+    calendar: jsonData.MRData.RaceTable.Races,
+  };
 }
 
 /**
@@ -129,8 +139,10 @@ function displayNextGP(appState: AppState): Promise<AppState> {
     const gpInfo = appState.calendar
       .find((gp) => (getTodayInPosix(appState) <= convertDateIntoPosix(gp)));
 
+    /* eslint-disable */
     console.log('The next Formula-1 GP:');
     console.log(JSON.stringify(gpInfo, null, 2));
+    /* eslint-enable */
 
     resolve(appState);
   });
