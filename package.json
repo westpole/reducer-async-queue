@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Usage of Array.reducer for async requests",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node javascript/app.js",
@@ -27,16 +28,16 @@
   "author": "Stanislav Spuzyak",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^3.1.1"
+    "node-fetch": "^3.2.3"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.5.4",
-    "@typescript-eslint/eslint-plugin": "^2.17.0",
-    "@typescript-eslint/parser": "^2.17.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "@types/node-fetch": "^2.6.1",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
   }
 }
