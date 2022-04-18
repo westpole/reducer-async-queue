@@ -1,6 +1,6 @@
 {
   "name": "reducer-async-queue",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Usage of Array.reducer for async requests",
   "main": "app.js",
   "type": "module",
