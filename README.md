@@ -58,6 +58,8 @@ The next Formula-1 GP:
 }
 ```
 
+Get more details JSON example could be found here: [https://ergast.com/api/f1/results.json](https://ergast.com/api/f1/results.json)
+
 ## Development
 
 #### Lint code base

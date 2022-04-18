@@ -4,7 +4,7 @@
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
-    "module": "CommonJS",
+    "module": "esnext",
     "target": "es6",
     "allowJs": true,
     "sourceMap": true,
