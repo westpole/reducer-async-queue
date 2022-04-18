@@ -26,7 +26,8 @@ const initState: AppState = {
  */
 async function queueHandler(
   previousPromise: Promise<AppState>,
-  taskFn: Function,
+  // eslint-disable-next-line no-unused-vars
+  taskFn: (newState: AppState) => Promise<AppState>,
 ): Promise<AppState> {
   const newState = await previousPromise;
 
@@ -43,7 +44,10 @@ function runner(queue: Queue, state: AppState): void {
 /**
  * Factory for response converter
  */
-function setResponseConvertion(type: string): Function {
+function setResponseConvertion(
+  type: string,
+  // eslint-disable-next-line no-unused-vars
+): (response: ErganResponse) => Promise<ErganResponse> {
   return function convertResponse(
     response: ErganResponse,
   ): Promise<ErganResponse> {
@@ -112,7 +116,7 @@ async function getCalendar(appState: AppState): Promise<AppState> {
   let jsonData;
 
   try {
-    jsonData = await setResponseConvertion('json')(response);
+    jsonData = await setResponseConvertion('json')(response as ErganResponse);
   } catch (error) {
     /* eslint-disable */
     console.error(`Cannot get calendar from ${appState.baseUrl}`);

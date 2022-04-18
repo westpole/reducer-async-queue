@@ -42,9 +42,14 @@ export interface ErganResponse {
     limit: string;
     offset: string;
     total: string;
-    RaceTable: {};
+    RaceTable: {
+      Races: CalendarEntity[];
+    };
   };
-  json: Function;
+  json: () => Promise<ErganResponse>;
 }
 
-export type Queue = Function[];
+// eslint-disable-next-line no-unused-vars
+type QueueRunner = (appState: AppState) => Promise<AppState>;
+
+export type Queue = QueueRunner[];
