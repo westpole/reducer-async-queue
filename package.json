@@ -10,8 +10,8 @@
     "start:ts": "node --loader ts-node/esm typescript/app.ts",
     "lint:js": "eslint -c javascript/eslintrc.json javascript/*.js",
     "lint:ts": "eslint -c typescript/eslintrc.json typescript/*.ts",
-    "coverage:ts": "typescript-coverage-report",
-    "report:ts": "open-cli reports/ts-coverage/index.html"
+    "coverage:types": "typescript-coverage-report",
+    "report:types": "open-cli reports/ts-coverage/index.html"
   },
   "keywords": [
     "node",

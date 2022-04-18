@@ -15,25 +15,25 @@ Git repository: https://github.com/westpole/reducer-async-queue
 
 #### 2. Install dependencies
 
-```shell
+```sh
 npm i
 ```
 
 #### 3. Run Application
 
-```shell
+```sh
 npm start
 ```
 
 Alternatively you can run TypeScript version:
 
-```shell
+```sh
 npm run start:ts
 ```
 
 #### 3.1 Output example
 
-```shell
+```sh
 > node app.js
 
 The next Formula-1 GP:
@@ -62,12 +62,27 @@ Get more details JSON example could be found here: [https://ergast.com/api/f1/re
 
 ## Development
 
-#### Lint code base
+### Lint code base
 
-```shell
+```sh
 # javascript application
 npm run lint:js
 
 # typescript application
 npm run lint:ts
+```
+
+### Type coverage
+
+Generate type coverage report for TS and JS codebases.
+
+```sh
+npm run coverage:types
+```
+
+Coverage report will be displayed in the terminal window.
+Also you can review report in a browser:
+
+```sh
+npm run report:types
 ```
