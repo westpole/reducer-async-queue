@@ -11,7 +11,15 @@
     "lint:js": "eslint -c javascript/eslintrc.json javascript/*.js",
     "lint:ts": "eslint -c typescript/eslintrc.json typescript/*.ts",
     "coverage:types": "typescript-coverage-report",
-    "report:types": "open-cli reports/ts-coverage/index.html"
+    "report:types": "open-cli reports/ts-coverage/index.html",
+    "audit": "npm audit --json | npm-audit-html --output reports/npm-audit.html",
+    "report:audit": "open-cli reports/npm-audit.html",
+    "git:commit": "git add . && git commit -m \"build: bump up to a new version\"",
+    "git:push": "git push origin master && git push --tags",
+    "release:major": "npm version major",
+    "release:minor": "npm version minor",
+    "release:patch": "npm version patch",
+    "postversion": "npm run git:commit && npm run git:push"
   },
   "keywords": [
     "node",
@@ -47,6 +55,7 @@
     "eslint": "^8.13.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "npm-audit-html": "^1.5.0",
     "open-cli": "^7.0.1",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3",
