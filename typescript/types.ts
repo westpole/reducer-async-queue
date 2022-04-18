@@ -20,7 +20,7 @@ interface CalendarEntity {
 
 export interface AppState {
   baseUrl: string | null;
-  year: string | null;
+  year: number | null;
   calendar: CalendarEntity[] | null;
   current: {
     date: string | null;

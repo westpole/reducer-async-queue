@@ -132,10 +132,12 @@ function getTodayInPosix(appState) {
   * @returns {object} Promise
   */
 function setupF12020Season(appState) {
+  const currentYear = new Date().getFullYear();
+
   return Promise.resolve({
     ...appState,
     baseUrl: 'https://ergast.com/api/f1',
-    year: '2020',
+    year: currentYear,
   });
 }
 
