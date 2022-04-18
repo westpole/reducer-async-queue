@@ -9,7 +9,9 @@
     "start": "node javascript/app.js",
     "start:ts": "node --loader ts-node/esm typescript/app.ts",
     "lint:js": "eslint -c javascript/eslintrc.json javascript/*.js",
-    "lint:ts": "eslint -c typescript/eslintrc.json typescript/*.ts"
+    "lint:ts": "eslint -c typescript/eslintrc.json typescript/*.ts",
+    "coverage:ts": "typescript-coverage-report",
+    "report:ts": "open-cli reports/ts-coverage/index.html"
   },
   "keywords": [
     "node",
@@ -37,7 +39,12 @@
     "eslint": "^8.13.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "open-cli": "^7.0.1",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "typescript-coverage-report": "^0.6.4"
+  },
+  "typeCoverage": {
+    "outputDir": "./reports/ts-coverage"
   }
 }
